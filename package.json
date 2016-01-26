@@ -1,0 +1,17 @@
+{
+  "name": "hockeynn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Glenn Nausley",
+  "license": "ISC",
+  "dependencies": {
+    "csvtojson": "^0.5.1",
+    "lodash": "^4.0.1",
+    "synaptic": "^1.0.2"
+  }
+}
