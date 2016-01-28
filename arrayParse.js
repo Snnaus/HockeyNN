@@ -1,4 +1,4 @@
-exports.parseStats = function(JSONarray){
+exports.parseStats = function(JSONarray, showName){
     return JSONarray.filter(function(team){ return team.Rk != 'Rk'}).map(function(year){
         var newYear = {}, ignored = ['Rk', 'Team', 'GP'], notDivi = ['PP%', 'PK%', 'S%', 'SV%'];
         newYear.input = Object.keys(year).reduce(function(agg, key){
@@ -12,10 +12,13 @@ exports.parseStats = function(JSONarray){
 
             return agg;
         }, []);
-
-        newYear.output = [0];
-        if(year.Team.slice(-1) === '*'){
-            newYear.output = [1];
+        if(!showName){
+            newYear.output = [0];
+            if(year.Team.slice(-1) === '*'){
+                newYear.output = [1];
+            }
+        }else{
+            newYear.output = year.Team;
         }
 
         return newYear;

@@ -4,7 +4,7 @@ var fs = require('fs'),
     Converter = require('csvtojson').Converter,
     JSONparse = require('./arrayParse');
 
-    var converter = new Converter({}), net = new synaptic.Architect.LSTM(14,8,1), teamAr = [];
+    var converter = new Converter({}), net = new synaptic.Architect.LSTM(14,7,1), teamAr = [];
     converter.on('end_parsed', function(JSONarray){
       teamAr = JSONparse.parseStats(JSONarray);
     });
@@ -14,11 +14,11 @@ var fs = require('fs'),
 });
 
 
-var params = { iterations: 500000 };
+var params = { iterations: 100000 };
 
 setTimeout(function(){
     console.log(net.trainer.train(teamAr, params))
-    fs.writeFile('14_8_1_5x_.json', JSON.stringify(net.toJSON()), function(err){
+    fs.writeFile('Network_Jsons/14_7_1_2_.json', JSON.stringify(net.toJSON()), function(err){
       if(err){
           console.log(err);
       }else{
